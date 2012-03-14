@@ -1,1 +1,1 @@
-web: bundle exec bin/pagerduty-incident-webhooks
+web: bundle exec ruby bin/pagerduty-incident-webhooks
