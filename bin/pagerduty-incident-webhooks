@@ -37,8 +37,10 @@ while true do
       id = incident["incident_number"]
       if $memcache.get(id) == incident["last_status_change_on"]
         puts "Incident #{id}: Stale"
+        puts incident.inspect
       else
         puts "Incident #{id}: Creation / update discovered"
+        puts incident.inspect
         puts "Incident #{id}: Firing webhook"
         puts RestClient.post(ENV['PAGERDUTY_WEBHOOK_ENDPOINT'], incident).inspect
         puts "Incident #{id}: Marking seen as of #{incident["last_status_change_on"]}"
