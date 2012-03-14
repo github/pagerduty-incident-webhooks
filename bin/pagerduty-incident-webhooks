@@ -40,7 +40,7 @@ while true do
       else
         puts "Incident #{id}: Creation / update discovered"
         puts "Incident #{id}: Firing webhook"
-        puts RestClient.post(ENV['PAGERDUTY_WEBHOOK_ENDPOINT'], Yajl.dump(incident)).inspect
+        puts RestClient.post(ENV['PAGERDUTY_WEBHOOK_ENDPOINT'], incident).inspect
         puts "Incident #{id}: Marking seen as of #{incident["last_status_change_on"]}"
         $memcache.set(id, incident["last_status_change_on"])
       end
