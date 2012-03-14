@@ -1,0 +1,1 @@
+app: bundle exec bin/pagerduty-incident-webhooks

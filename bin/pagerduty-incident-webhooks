@@ -1,0 +1,50 @@
+#!/usr/bin/ruby
+$stdout.sync = true
+$: << File.expand_path("../../lib", Pathname.new(__FILE__).realpath)
+
+require 'rest_client'
+require 'yajl'
+require 'pager_duty'
+require 'dalli'
+require 'sinatra'
+
+$memcache = Dalli::Client.new('localhost:11211')
+
+PagerDuty.config = {
+  :account_subdomain => ENV['PAGERDUTY_ACCOUNT_SUBDOMAIN'],
+  :auth_email        => ENV['PAGERDUTY_AUTH_EMAIL'],
+  :auth_password     => ENV['PAGERDUTY_AUTH_PASSWORD'],
+}
+
+# HTTP status check to make sure this is still happening
+t = Thread.new do
+  class App < Sinatra::Base
+    get '/' do
+      'OK'
+    end
+  end
+
+  App.run! :host => 'localhost', :port => ENV['PORT']
+end
+
+while true do
+  puts Time.now.utc
+  incidents = PagerDuty::Incident.triggered
+  if incidents.empty?
+    puts "No incidents"
+  else
+    incidents.each do |incident|
+      id = incident["incident_number"]
+      if $memcache.get(id) == incident["last_status_change_on"]
+        puts "Incident #{id}: Stale"
+      else
+        puts "Incident #{id}: Creation / update discovered"
+        puts "Incident #{id}: Firing webhook"
+        puts RestClient.post(ENV['PAGERDUTY_WEBHOOK_ENDPOINT'], Yajl.dump(incident)).inspect
+        puts "Incident #{id}: Marking seen as of #{incident["last_status_change_on"]}"
+        $memcache.set(id, incident["last_status_change_on"])
+      end
+    end
+  end
+  sleep 10
+end
