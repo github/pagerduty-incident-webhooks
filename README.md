@@ -32,3 +32,12 @@ Fire up a web process:
 Verify it works:
 
     heroku logs -t
+
+## Credit where Credit is Due
+
+This uses and expands upon the PagerDuty Ruby library @leejones wrote for [pager_today](https://github.com/railsmachine/pager_today).
+
+Copying
+-------
+
+Copyright 2012, GitHub, Inc. See the `LICENSE` file for license rights and limitations (MIT).
