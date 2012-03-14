@@ -24,3 +24,11 @@ Set the following config at heroku:
 Ship it:
 
     git push heroku master
+
+Fire up a web process:
+
+    heroku scale web=1
+
+Verify it works:
+
+    heroku logs -t
