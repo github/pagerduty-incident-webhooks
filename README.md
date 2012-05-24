@@ -1,6 +1,6 @@
 # PagerDuty Incident Webhooks
 
-This fires a webhook of incident data for each triggered incident PagerDuty in your account. Ideally, you'd point this at another tiny app that processes the events and does your bidding with them - ships them to campfire, APN, whatever.
+This fires a webhook of incident data for each triggered incident PagerDuty in your account. Ideally, you'd point this at another tiny app that processes the events and does your bidding with them - ships them to campfire, APN, a tiny sinatra app that pipes incidents to `say`...go nuts.
 
 Re-triggered incidents will cause an additional webhook to be sent for the same incident. Make sure your endpoint is okay with this.
 
@@ -12,14 +12,15 @@ Clone this repo.
 
 In the clone:
 
-    heroku create --stack cedar yourname-pagerduty-incident-webhooks --addons memcache
+    heroku create --stack cedar yourname-pagerduty-incident-webhooks --addons memcache heroku papertrail:test
+
 
 Set the following config at heroku:
 
     heroku config:add PAGERDUTY_ACCOUNT_SUBDOMAIN=foo
     heroku config:add PAGERDUTY_AUTH_EMAIL=foo@foo.com
     heroku config:add PAGERDUTY_AUTH_PASSWORD=foo
-    heroku config:add PAGERDUTY_WEBHOOK_ENDPOINT=http://www.postbin.org/adsfasd
+    heroku config:add PAGERDUTY_WEBHOOK_ENDPOINT=http://requestb.in/1e88aqp1
 
 Ship it:
 
@@ -29,13 +30,11 @@ Fire up a web process:
 
     heroku scale web=1
 
-Verify it works:
-
-    heroku logs -t
+Hit up [papertrail](https://papertrailapp.com/events) and check on the logs.
 
 ## Credit where Credit is Due
 
-This uses and expands upon the PagerDuty Ruby library @leejones wrote for [pager_today](https://github.com/railsmachine/pager_today).
+Large parts of this are based on the PagerDuty library [@leejones](https://github.com/leejones) wrote for [pager_today](https://github.com/railsmachine/pager_today).
 
 Copying
 -------

@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://email%40example.com:omgsecretsauce@subdomain.pagerduty.com/api/v1/incidents?status=triggered
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*; q=0.5, application/xml'
+      accept-encoding:
+      - gzip, deflate
+      user-agent:
+      - Ruby
+      authorization:
+      - Basic deadbeef==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      server:
+      - nginx/1.0.14
+      date:
+      - Fri, 25 May 2012 01:24:02 GMT
+      content-type:
+      - application/json; charset=utf-8
+      connection:
+      - keep-alive
+      status:
+      - 200 OK
+      etag:
+      - ! '"0831dbb6570f65bde00308a2e5a92a64"'
+      x-runtime:
+      - '40'
+      content-length:
+      - '808'
+      set-cookie:
+      - _pagerduty_session=nope;
+        path=/; HttpOnly
+      - uid=CvXegE++3zKKjC8dDPCTAg==; expires=Thu, 31-Dec-37 23:55:55 GMT; domain=pagerduty.com;
+        path=/
+      cache-control:
+      - private, max-age=0, must-revalidate
+    body:
+      encoding: US-ASCII
+      string: ! '{"offset":0,"incidents":[{"assigned_to_user":{"name":"email","id":"UYUIJ7","html_url":"http://subdomain.pagerduty.com/users/UYUIJ7","email":"email@example.com"},"trigger_summary_data":{"HOSTSTATE":"UP","pd_nagios_object":"service","SERVICEDESC":"puppet_env","SERVICESTATE":"CRITICAL","HOSTNAME":"m1"},"last_status_change_on":"2012-05-25T01:23:06Z","trigger_details_html_url":"http://subdomain.pagerduty.com/incidents/PGT6ANM/log_entries/PSW5T1C","created_on":"2012-05-25T01:23:06Z","service":{"name":"nagios","id":"PDQCZQO","html_url":"http://subdomain.pagerduty.com/services/PDQCZQO"},"last_status_change_by":null,"status":"triggered","html_url":"http://subdomain.pagerduty.com/incidents/PGT6ANM","incident_key":"event_source=service;host_name=m1;service_desc=puppet_env","incident_number":936}],"total":1,"limit":100}'
+    http_version: '1.1'
+  recorded_at: Fri, 25 May 2012 01:24:02 GMT
+recorded_with: VCR 2.1.1

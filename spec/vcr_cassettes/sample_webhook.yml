@@ -1,0 +1,40 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://requestb.in/1e88aqp1
+    body:
+      encoding: US-ASCII
+      string: assigned_to_user[name]=jesse&assigned_to_user[id]=FTYJNBG&assigned_to_user[html_url]=http%3A%2F%2Ffo.pagerduty.com%2Fusers%2FFTYJNBG&assigned_to_user[email]=email%40example.com&trigger_summary_data[HOSTSTATE]=UP&trigger_summary_data[pd_nagios_object]=service&trigger_summary_data[SERVICEDESC]=fs_partition_8&trigger_summary_data[SERVICESTATE]=CRITICAL&trigger_summary_data[HOSTNAME]=aux1&service[name]=nagios&service[id]=PDQCZQO&service[html_url]=http%3A%2F%2Fsubdomain.pagerduty.com%2Fservices%2FPDQCZQO&last_status_change_on=2012-05-24T23%3A11%3A37Z&trigger_details_html_url=http%3A%2F%2Fsubdomain.pagerduty.com%2Fincidents%2FPJFCU67%2Flog_entries%2FP9MBROA&created_on=2012-05-24T23%3A11%3A37Z&last_status_change_by=&status=triggered&html_url=http%3A%2F%2Fsubdomain.pagerduty.com%2Fincidents%2FPJFCU67&incident_key=event_source%3Dservice%3Bhost_name%3Daux1%3Bservice_desc%3Dfs_partition_8&incident_number=934
+    headers:
+      accept:
+      - ! '*/*; q=0.5, application/xml'
+      accept-encoding:
+      - gzip, deflate
+      content-length:
+      - '900'
+      content-type:
+      - application/x-www-form-urlencoded
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - text/html; charset=utf-8
+      date:
+      - Fri, 25 May 2012 00:39:40 GMT
+      content-length:
+      - '3'
+      connection:
+      - keep-alive
+    body:
+      encoding: US-ASCII
+      string: ! 'ok
+
+'
+    http_version: '1.1'
+  recorded_at: Fri, 25 May 2012 00:39:40 GMT
+recorded_with: VCR 2.1.1

@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://email%40example.com:omgsecretsauce@subdomain.pagerduty.com/api/v1/incidents?status=triggered
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*; q=0.5, application/xml'
+      accept-encoding:
+      - gzip, deflate
+      user-agent:
+      - Ruby
+      authorization:
+      - Basic deadbeef==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      server:
+      - nginx/1.0.14
+      date:
+      - Fri, 25 May 2012 01:09:33 GMT
+      content-type:
+      - application/json; charset=utf-8
+      connection:
+      - keep-alive
+      status:
+      - 200 OK
+      etag:
+      - ! '"e7bfad7e102e3841ccb8e7058888d46b"'
+      x-runtime:
+      - '32'
+      content-length:
+      - '49'
+      set-cookie:
+      - _pagerduty_session=nope;
+        path=/; HttpOnly
+      - uid=CvXegE++282Kqy8cDN29Ag==; expires=Thu, 31-Dec-37 23:55:55 GMT; domain=pagerduty.com;
+        path=/
+      cache-control:
+      - private, max-age=0, must-revalidate
+    body:
+      encoding: US-ASCII
+      string: ! '{"offset":0,"incidents":[],"total":0,"limit":100}'
+    http_version: '1.1'
+  recorded_at: Fri, 25 May 2012 01:09:33 GMT
+recorded_with: VCR 2.1.1
