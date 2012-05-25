@@ -21,6 +21,7 @@ Set the following config at heroku:
     heroku config:add PAGERDUTY_AUTH_EMAIL=foo@foo.com
     heroku config:add PAGERDUTY_AUTH_PASSWORD=foo
     heroku config:add PAGERDUTY_WEBHOOK_ENDPOINT=http://requestb.in/1e88aqp1
+    heroku config:add POLL_INTERVAL=10
 
 Ship it:
 

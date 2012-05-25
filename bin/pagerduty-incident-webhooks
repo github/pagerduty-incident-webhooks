@@ -22,4 +22,4 @@ PagerDuty.config = {
 }
 
 PagerDuty::Incident.cache = Dalli::Client.new(ENV['MEMCACHE'] || 'localhost:11211')
-PagerDuty::Incident.webhook_loop(ENV['PAGERDUTY_WEBHOOK_ENDPOINT'])
+PagerDuty::Incident.webhook_loop(ENV['PAGERDUTY_WEBHOOK_ENDPOINT'], (ENV['POLL_INTERVAL'] || 10))

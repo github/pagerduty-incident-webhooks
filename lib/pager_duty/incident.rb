@@ -20,7 +20,7 @@ module PagerDuty
     def self.webhook_loop(endpoint, interval = 10)
       while true do
         process_triggered_incidents(endpoint)
-        sleep interval
+        sleep interval.to_i
       end
     end
 
