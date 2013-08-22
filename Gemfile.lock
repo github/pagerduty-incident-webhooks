@@ -16,6 +16,7 @@ GEM
       excon (~> 0.13.3)
     launchy (2.1.0)
       addressable (~> 2.2.6)
+    memcachier (0.0.2)
     metaclass (0.0.1)
     mime-types (1.17.2)
     mocha (0.11.4)
@@ -51,6 +52,7 @@ DEPENDENCIES
   dalli
   fakeweb
   heroku
+  memcachier
   mocha
   rake
   rest-client
