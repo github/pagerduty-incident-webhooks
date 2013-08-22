@@ -1,5 +1,6 @@
 require 'rest_client'
 require 'yajl'
+require 'memcachier'
 require 'dalli'
 
 module PagerDuty
