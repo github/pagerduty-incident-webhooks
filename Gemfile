@@ -2,6 +2,7 @@ source :rubygems
 
 gem 'rest-client'
 gem 'yajl-ruby'
+gem 'memcachier'
 gem 'dalli'
 gem 'sinatra'
 
