@@ -1,3 +1,5 @@
+**NOTE: This repository is no longer supported or updated by GitHub. If you wish to continue to develop this code yourself, we recommend you fork it.**
+
 # PagerDuty Incident Webhooks
 
 This fires a webhook of incident data for each triggered incident PagerDuty in your account. Ideally, you'd point this at another tiny app that processes the events and does your bidding with them - ships them to campfire, APN, a tiny sinatra app that pipes incidents to `say`...go nuts.
